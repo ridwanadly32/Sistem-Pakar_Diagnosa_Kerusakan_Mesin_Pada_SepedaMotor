@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edukasi Perawatan Motor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a1931 60%, #2066f1 100%);
+            color: #fff;
+            font-family: 'Poppins', Arial, sans-serif;
+            min-height: 100vh;
+            padding-bottom: 70px;
+        }
+        .navbar {
+            background: rgba(17,34,77,0.85);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 16px rgba(32,102,241,0.08);
+        }
+        .navbar .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin-right: 8px;
+            transition: color 0.2s;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+            color: #2066f1 !important;
+        }
+        /* .container {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        } */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: none; }
+        }
+        .article-card {
+            background: rgba(17,34,77,0.95);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(32,102,241,0.10);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            height: 100%;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(32,102,241,0.25);
+        }
+        .article-title {
+            color: #4f8cff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .article-content {
+            color: #cfd8ff;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .article-icon {
+            font-size: 2.5rem;
+            color: #2066f1;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .maintenance-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        .maintenance-list li {
+            background: rgba(32, 102, 241, 0.15);
+            padding: 12px 18px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border-left: 4px solid #4f8cff;
+            word-wrap: break-word;
+            color: #cfd8ff;
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .maintenance-list li i {
+            margin-right: 12px;
+            color: #2066f1;
+        }
+        .footer {
+            color: #cfd8ff;
+            font-size: 0.95rem;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            background: rgba(17,34,77,0.95);
+            z-index: 100;
+            letter-spacing: 0.5px;
+            padding: 15px 0;
+        }
+        
+        @media (max-width: 991px) {
+            .article-card { padding: 20px; }
+        }
+
+        .card-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px; /* Jarak antar card */
+    }
+    .card-row > .col-md-6 {
+        flex: 0 1 calc(50% - 15px); /* agar tetap dua card per baris tapi ada jarak */
+    }
+
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">Sistem Pakar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/layanan">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/edukasi">Edukasi</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <div class="container">
+        <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2 class="text-center mb-5">Edukasi Perawatan Motor</h2>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row card-row">
+
+                    <!-- Artikel Perawatan Rutin -->
+                    <div class="col-md-6 mb-4">
+                        <div class="article-card h-100">
+                            <div class="article-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="article-title">Perawatan Motor Rutin</h3>
+                            <div class="article-content">
+                                <p>Perawatan rutin sangat penting untuk menjaga performa dan keawetan motor Anda. Berikut adalah jadwal perawatan yang disarankan:</p>
+                                <ul class="maintenance-list">
+                                    <li><i class="fas fa-check-circle"></i>Ganti oli setiap 2.000-3.000 km atau minimal setiap 2-3 bulan sekali, tergantung pada intensitas penggunaan motor</li>
+                                    <li><i class="fas fa-check-circle"></i>Periksa busi setiap 4.000 km, dan ganti jika sudah mulai aus atau kotor</li>
+                                    <li><i class="fas fa-check-circle"></i>pengecekan dan pembersihan filter udara setiap 3.000 km atau lebih sering jika motor sering digunakan di area berdebu</li>
+                                    <li><i class="fas fa-check-circle"></i>Lumasi rantai secara rutin setiap 500-1.000 km atau lebih sering jika motor sering digunakan di jalanan basah atau berdebu</li>
+                                    <li><i class="fas fa-check-circle"></i>Hindari penggunaan bahan bakar berkualitas rendah karena dapat menyebabkan kerak pada mesin dan menurunkan performa serta efisiensi bahan bakar.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tips Perawatan Harian -->
+                    <div class="col-md-6 mb-4">
+                        <div class="article-card h-100">
+                            <div class="article-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="article-title">Tips Perawatan Harian</h3>
+                            <div class="article-content">
+                                <p>Beberapa hal yang perlu diperhatikan dalam perawatan harian motor:</p>
+                                <ul class="maintenance-list">
+                                    <li><i class="fas fa-check-circle"></i>Periksa tekanan ban secara visual. Ban yang kempis dapat terlihat jelas</li>
+                                    <li><i class="fas fa-check-circle"></i>Panaskan mesin selama 1-2 menit sebelum berkendara, terutama di pagi hari</li>
+                                    <li><i class="fas fa-check-circle"></i>Pastikan semua lampu (depan, belakang, rem, dan sein) berfungsi dengan baik</li>
+                                    <li><i class="fas fa-check-circle"></i>Hindari membiarkan tangki bahan bakar terlalu kosong, terutama pada motor injeksi</li>
+                                    <li><i class="fas fa-check-circle"></i>Pastikan tidak ada suara aneh atau getaran berlebihan saat pengereman</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tips Menghemat BBM -->
+                    <div class="col-md-6 mb-4">
+                        <div class="article-card h-100">
+                            <div class="article-icon">
+                                <i class="fas fa-gas-pump"></i>
+                            </div>
+                            <h3 class="article-title">Tips Menghemat BBM</h3>
+                            <div class="article-content">
+                                <p>Beberapa tips untuk menghemat konsumsi BBM motor Anda:</p>
+                                <ul class="maintenance-list">
+                                    <li><i class="fas fa-check-circle"></i>Rencanakan Rute Perjalanan Sebelum Berangkat</li>
+                                    <li><i class="fas fa-check-circle"></i>Jaga Tekanan Angin Ban</li>
+                                    <li><i class="fas fa-check-circle"></i>Gunakan BBM Sesuai Spesifikasi Mesin </li>
+                                    <li><i class="fas fa-check-circle"></i>Hindari Memanaskan Kendaraan Terlalu Lama</li>
+                                    <li><i class="fas fa-check-circle"></i>Jangan Memuat Barang atau Penumpang Berlebihan</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tips Menjaga Mesin -->
+                    <div class="col-md-6 mb-4">
+                        <div class="article-card h-100">
+                            <div class="article-icon">
+                                <i class="fas fa-motorcycle"></i>
+                            </div>
+                            <h3 class="article-title">Tips Menjaga Mesin Motor</h3>
+                            <div class="article-content">
+                                <p>Beberapa tips untuk menjaga performa mesin motor:</p>
+                                <ul class="maintenance-list">
+                                    <li><i class="fas fa-check-circle"></i>Lakukan Servis Injektor</li>
+                                    <li><i class="fas fa-check-circle"></i>Tune Up Secara Berkala</li>
+                                    <li><i class="fas fa-check-circle"></i>Rutin Ganti Busi </li>
+                                    <li><i class="fas fa-check-circle"></i>Rutin Cek Tekanan Angin </li>
+                                    <li><i class="fas fa-check-circle"></i>Hindari Putaran Mesin Tinggi </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer text-center py-3">
+        &copy; 2025 Sistem Pakar Kerusakan Mesin Sepeda Motor
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

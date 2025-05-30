@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Diagnosa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a1931 60%, #2066f1 100%);
+            color: #fff;
+            font-family: 'Poppins', Arial, sans-serif;
+            min-height: 100vh;
+            padding-bottom: 70px;
+        }
+        .navbar {
+            background: rgba(17,34,77,0.85);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 16px rgba(32,102,241,0.08);
+        }
+        .navbar .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin-right: 8px;
+            transition: color 0.2s;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+            color: #2066f1 !important;
+        }
+        .full-vh-center {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .result-card {
+            background: rgba(17,34,77,0.95);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(32,102,241,0.10);
+            padding: 48px 36px;
+            animation: fadeInUp 1s;
+            height: 150%; 
+            margin-top: 50px;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: none; }
+        }
+        .result-title {
+            font-size: 2.1rem;
+            font-weight: bold;
+            color: #4f8cff;
+        }
+        .result-icon {
+            font-size: 3.5rem;
+            color: #2066f1;
+            margin-bottom: 1rem;
+        }
+        .result-card h5 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #cfd8ff;
+        }
+        .result-card ul {
+         list-style: none;
+         padding: 0;
+        margin: 0 auto;
+        max-width: 90%;
+        /* max-height: 200px; */
+        /* overflow-y: auto; */
+        padding-right: 10px;
+        /* style lain tetap */
+}
+
+        .result-card ul li {
+            background-color: rgba(32, 102, 241, 0.1);
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #2066f1;
+            word-wrap: break-word;
+            color: #cfd8ff;
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .result-card ul li:last-child {
+            margin-bottom: 0;
+        }
+        .result-card ul li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(32, 102, 241, 0.2);
+        }
+        .btn-main {
+            background: linear-gradient(90deg, #2066f1 60%, #4f8cff 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 12px 36px;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(32,102,241,0.15);
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+        }
+        .btn-main:hover {
+            background: linear-gradient(90deg, #4f8cff 0%, #2066f1 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 32px rgba(32,102,241,0.18);
+        }
+        .footer {
+            color: #cfd8ff;
+            font-size: 0.95rem;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            background: rgba(17,34,77,0.95);
+            z-index: 100;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 991px) {
+            .result-card { padding: 32px 12px; }
+            .hero-img { height: 200px; }
+        }
+        @media (max-width: 767px) {
+            .footer { font-size: 0.85rem; }
+        }
+        .scrollable-content {
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Sistem Pakar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/layanan">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/edukasi">Edukasi</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container full-vh-center">
+        <div class="row w-100 align-items-center justify-content-center">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="result-card text-center">
+                    <div class="result-icon mb-3">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="result-title mb-4">Hasil Diagnosa</div>
+                    <div class="scrollable-content">
+                        {% if diagnosa_results %}
+                            {% for item in diagnosa_results %}
+                                <h3 class="mb-3">Jenis Kerusakan :  {{ item.penyakit }}</h3>
+                                <!-- {% if item.solusi %}
+                                    <h5 class="text-light mt-2 mb-2">Solusi yang disarankan:</h5>
+                                    <ul class="text-start" style="max-width: 90%; margin: 0 auto;">
+                                        {% for sol in item.solusi %}
+                                            <li>{{ sol }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %} -->
+                                {% if not loop.last %}
+                                    <hr style="border-top: 1px dashed rgba(255, 255, 255, 0.3); margin: 30px auto; width: 50%;">
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <p>Tidak ada diagnosa yang ditemukan.</p>
+                            <!-- <h5 class="text-light mt-4 mb-2">Solusi yang disarankan:</h5>
+                            <ul class="text-start" style="max-width: 90%; margin: 0 auto;">
+                                <li>Silakan periksa motor Anda ke bengkel terdekat.</li>
+                            </ul> -->
+                        {% endif %}
+                    </div>
+                    <a href="/" class="btn btn-main btn-lg mt-4"><i class="fas fa-home me-2"></i>Kembali ke Beranda</a>
+                </div>
+            </div>
+            <div class="col-md-5 text-center d-none d-md-block">
+                <img style=" height: 150%; margin-left: 90px; object-fit: contain;" src="{{ url_for('static', filename='img/sepeda_motor.png') }}" alt="Ilustrasi Diagnosa" class="hero-img">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer text-center py-3">
+        &copy; 2025 Sistem Pakar Kerusakan Mesin Sepeda Motor
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>

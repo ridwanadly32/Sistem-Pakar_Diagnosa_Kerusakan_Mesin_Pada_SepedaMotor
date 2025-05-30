@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosa Kerusakan Mesin Pada Sepeda Motor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a1931 60%, #2066f1 100%);
+            color: #fff;
+            font-family: 'Poppins', Arial, sans-serif;
+            min-height: 100vh;
+            padding-bottom: 70px;
+        }
+        .navbar {
+            background: rgba(17,34,77,0.85);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 16px rgba(32,102,241,0.08);
+        }
+        .navbar .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin-right: 8px;
+            transition: color 0.2s;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+            color: #2066f1 !important;
+        }
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-card {
+            background: rgba(17,34,77,0.95);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(32,102,241,0.10);
+            padding: 48px 36px;
+            animation: fadeInUp 1s;
+            height: 150%; 
+            margin-top: 50px;
+
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: none; }
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+        .hero-desc {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: #cfd8ff;
+        }
+        .btn-main {
+            background: linear-gradient(90deg, #2066f1 60%, #4f8cff 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 14px 40px;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(32,102,241,0.15);
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+        }
+        .btn-main:hover {
+            background: linear-gradient(90deg, #4f8cff 0%, #2066f1 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 32px rgba(32,102,241,0.18);
+        }
+        .hero-img {
+            max-width: 100%;
+            height: 320px;
+            object-fit: contain;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            filter: drop-shadow(0 8px 32px rgba(32,102,241,0.10));
+            animation: fadeInUp 1.2s;
+        }
+        .footer {
+            color: #cfd8ff;
+            font-size: 0.95rem;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            background: rgba(17,34,77,0.95);
+            z-index: 100;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 991px) {
+            .hero-card { padding: 32px 12px; }
+            .hero-img { height: 200px; }
+        }
+        @media (max-width: 767px) {
+            .hero { flex-direction: column; padding-top: 40px; }
+            .footer { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">Sistem Pakar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="/">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="/tentang">Tentang</a></li>
+                <li class="nav-item"><a class="nav-link" href="/layanan">Layanan</a></li>
+                <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+                <li class="nav-item"><a class="nav-link" href="/edukasi">Edukasi</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container hero">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div class="hero-card">
+                <div class="hero-title mb-3">Sistem Pakar Metode Forward Chaining<br>Diagnosa Kerusakan Mesin Pada Sepeda Motor</div>
+                <div class="hero-desc mb-4">Sistem pakar ini digunakan untuk membantu menentukan jenis kerusakan mesin berdasarkan analisis gejala klinis yang dialami. Klik tombol di bawah untuk memulai diagnosa.</div>
+                <a href="/pertanyaan" class="btn btn-main btn-lg"><i class="fas fa-stethoscope me-2"></i>Mulai Diagnosa</a>
+            </div>
+        </div>
+        <div class="col-md-5 text-center d-none d-md-block">
+            <img style=" height: 150%; margin-left: 90px; object-fit: contain;" src="{{ url_for('static', filename='img/sepeda_motor.png') }}" alt="Ilustrasi Diagnosa" class="hero-img">
+        </div>
+    </div>
+</div>
+
+<div class="footer text-center py-3">
+    &copy; 2025 Sistem Pakar Kerusakan Mesin Sepeda Motor
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>
