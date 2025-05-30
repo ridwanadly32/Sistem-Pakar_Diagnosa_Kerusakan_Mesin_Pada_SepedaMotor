@@ -1,0 +1,1 @@
+# Sistem-Pakar_Diagnosa_Kerusakan_Mesin_Pada_SepedaMotor
