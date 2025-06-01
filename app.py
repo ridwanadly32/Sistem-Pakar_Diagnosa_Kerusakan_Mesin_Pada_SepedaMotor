@@ -72,13 +72,13 @@ gejala_dict = {**gejala_matic, **gejala_gigi}
 
 # ===================== ATURAN MATIC =====================
 aturan_matic = {
-    "A01": {"gejala": ["G01", "G02", "G03", "G04"], "penyakit": "P01", "solusi_matic": "S01"},
-    "A02": {"gejala": ["G05", "G06", "G07", "G08"], "penyakit": "P02", "solusi_matic": "S02"},
-    "A03": {"gejala": ["G07", "G09", "G019", "G020"], "penyakit": "P03", "solusi_matic": "S03"},
-    "A04": {"gejala": ["G01", "G05", "G07", "G020"], "penyakit": "P04", "solusi_matic": "S04"},
-    "A05": {"gejala": ["G05", "G07", "G011", "G012", "G025"], "penyakit": "P05", "solusi_matic": "S05"},
-    "A06": {"gejala": ["G07", "G014", "G015", "G012", "G013", "G024"], "penyakit": "P06", "solusi_matic": "S06"},
-    "A07": {"gejala": ["G016", "G017", "G018", "G023"], "penyakit": "P07", "solusi_matic": "S07"}
+    "A01": {"gejala": ["G01", "G02", "G03", "G04"], "penyakit": "P01"},
+    "A02": {"gejala": ["G05", "G06", "G07", "G08"], "penyakit": "P02"},
+    "A03": {"gejala": ["G07", "G09", "G019", "G020"], "penyakit": "P03"},
+    "A04": {"gejala": ["G01", "G05", "G07", "G020"], "penyakit": "P04"},
+    "A05": {"gejala": ["G05", "G07", "G011", "G012", "G025"], "penyakit": "P05"},
+    "A06": {"gejala": ["G07", "G014", "G015", "G012", "G013", "G024"], "penyakit": "P06"},
+    "A07": {"gejala": ["G016", "G017", "G018", "G023"], "penyakit": "P07"}
 }
 
 # ===================== ATURAN GIGI =====================
@@ -130,47 +130,11 @@ penyakit_gigi_dict = {
     "KM15": "Swing ARM goyang atau baut aus",
 }
 
-# solusi_matic = {
-#     "S01" : ["Ganti gasket", "Bongkar CVT, ganti dan cek shield"],
-#     "S02" : ["Cek torak dan cincin", "Kanvas otomatis habis", "Bersihkan karbu"],
-#     "S03" : ["Ganti gasket", "Piston aus, ganti", "Cincin piston lemah", "Cek spuyer"],
-#     "S04" : ["Piston longgar", "Batang torak aus", "Roller CVT aus", "Ganti camshaft"],
-#     "S05" :  ["Ganti busi", "Cek CVT", "Karburator ganti spuyer"],
-#     "S06" : ["Cek dan ganti kanvas otomatis"],
-#     "S07" : ["Cek gasket", "Karbu tercampur air", "Busi aus"],
-#     "S08" : ["Gasket mesin rusak", "Ganti oli sesuai spesifikasi"],
-#     "S09" :  ["Piston macet", "Ganti batang torak", "Ganti busi"],
-#     "S10" : ["Karbu boros, ganti sprocket"],
-#     "S11" : ["Ganti gasket knalpot", "Katup bocor", "Ganti busi & cek pengapian"],
-#     "S12" : ["Setel katup", "Ganti spuyer standar"],
-#     "S13" : ["Gasket bocor", "Piston membakar oli, ganti piston & ring"],
-
-# }
 
 
 # ===================== GABUNGKAN SEMUA ATURAN =====================
 aturan_semua = {**aturan_matic, **aturan_gigi}
 
-# ===================== FLOW LINEAR GEJALA =====================
-# ===== Bangun flow pertanyaan dari gejala_dict =====
-pertanyaan_flow = {}
-semua_kode_gejala = list(gejala_dict.keys())
-for i, kode in enumerate(semua_kode_gejala):
-    pertanyaan_flow[kode] = {
-        "teks": f"Apakah motor mengalami gejala: {gejala_dict[kode]}?",
-        "ya": semua_kode_gejala[i + 1] if i + 1 < len(semua_kode_gejala) else "SELESAI",
-        "tidak": semua_kode_gejala[i + 1] if i + 1 < len(semua_kode_gejala) else "SELESAI"
-    }
-
-# ===== Tambahkan pertanyaan awal jenis motor =====
-pertanyaan_flow = {
-    "M0": {
-        "teks": "Apa jenis motor Anda?",
-        "ya": semua_kode_gejala[0],     # diarahkan ke G01
-        "tidak": semua_kode_gejala[0],  # sama aja
-        **pertanyaan_flow               # gabungkan semua pertanyaan sebelumnya ke dict ini
-    }
-}
 
 # ===================== ROUTES =====================
 
@@ -237,20 +201,16 @@ def pertanyaan():
             session['penyakit'] = data['penyakit']
             if session['penyakit'].startswith("KM"):
                 session['nama_penyakit'] = penyakit_gigi_dict.get(session['penyakit'], session['penyakit'])
-                session['solusi'] = ["Silakan periksa motor Anda ke bengkel."]
             elif session['penyakit'].startswith("P0"):
                 session['nama_penyakit'] = penyakit_matic_dict.get(session['penyakit'], session['penyakit'])
-                session['solusi'] = [session['nama_penyakit']]  # Gunakan nama penyakit sebagai solusi default
             else:
                 session['nama_penyakit'] = session['penyakit']
-                session['solusi'] = ["Tidak ditemukan solusi spesifik. Silakan periksa motor Anda ke bengkel."]
 
             return redirect(url_for('hasil'))
 
     # Jika semua aturan telah dicoba dan tidak ada yang cocok
     session['penyakit'] = "Tidak ditemukan diagnosa yang cocok."
     session['nama_penyakit'] = "Tidak ditemukan diagnosa yang cocok."
-    session['solusi'] = ["Silakan periksa motor Anda ke bengkel."]
     return redirect(url_for('hasil'))
 
 
@@ -286,19 +246,15 @@ def hasil():
 
                 if penyakit.startswith("KM"):
                     nama_penyakit = penyakit_gigi_dict.get(penyakit, penyakit)
-                    solusi = ["Silakan periksa motor Anda ke bengkel."]
                 elif penyakit.startswith("P0"):
                     nama_penyakit = penyakit_matic_dict.get(penyakit, penyakit)
-                    solusi = [nama_penyakit]  # Gunakan nama penyakit sebagai solusi default
                 else:
                     nama_penyakit = penyakit
-                    solusi = ["Tidak ditemukan solusi spesifik. Silakan periksa motor Anda ke bengkel."]
 
                 if best_rule is None or len(gejala_list) > len(aturan_semua[best_rule['kode_aturan']]['gejala']):
                     best_rule = {
                         "kode_aturan": kode_aturan,
                         "penyakit": nama_penyakit,
-                        "solusi": solusi
                     }
 
         if best_rule:
@@ -307,7 +263,6 @@ def hasil():
             diagnosa_results.append({
                 "kode_aturan": None,
                 "penyakit": "Tidak ditemukan diagnosa yang cocok.",
-                "solusi": ["Silakan periksa motor Anda ke bengkel."]
             })
 
         return render_template('hasil.html', diagnosa_results=diagnosa_results)
@@ -325,10 +280,6 @@ def tentang():
 @app.route('/layanan')
 def layanan():
     return render_template('layanan.html')
-
-@app.route('/kontak')
-def kontak():
-    return render_template('kontak.html')
 
 @app.route('/edukasi')
 def edukasi():
