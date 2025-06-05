@@ -102,7 +102,7 @@ aturan_gigi = {
 
 # ===================== PENYAKIT MATIC =====================
 penyakit_matic_dict = {
-    "P01" : "ACU",
+    "P01" : "Aki",
     "P02" : "Busi",
     "P03" : "Celah Klep",
     "P04" : "Injector",
